@@ -18,5 +18,9 @@ npm run dev
 Open http://localhost:3000
 
 ## Team
-- Frontend: (your name)
-- Backend: (partner's name)
+Arjun Atroley(Leader)
+Divy Purswani
+Dhruav Khosa
+Raghav Gupta
+Daksh Negi
+Vedansh Jakhetiya
