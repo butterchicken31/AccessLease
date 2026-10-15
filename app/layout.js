@@ -1,14 +1,18 @@
 import "./globals.css";
+import Nav from "../components/Nav";
 
 export const metadata = {
-  title: "Hackathon Starter",
-  description: "Next.js + AI starter ready for Vercel",
+  title: "AccessLease",
+  description: "Finds temporary access permissions that never expired",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Nav />
+        <main>{children}</main>
+      </body>
     </html>
   );
 }
