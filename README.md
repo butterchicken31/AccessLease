@@ -18,9 +18,9 @@ npm run dev
 Open http://localhost:3000
 
 ## Team
-Arjun Atroley(Leader)
-Divy Purswani
-Dhruav Khosa
-Raghav Gupta
-Daksh Negi
-Vedansh Jakhetiya
+Arjun Atroley(Leader)\n
+Divy Purswani\n
+Dhruav Khosa\n
+Raghav Gupta\n
+Daksh Negi\n
+Vedansh Jakhetiya\n
