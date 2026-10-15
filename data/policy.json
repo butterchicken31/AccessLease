@@ -1,0 +1,23 @@
+{
+  "version": "1.0",
+  "name": "Institutional Temporary Access Policy",
+  "rules": [
+    { "id": "P-01", "title": "Temporary access must end on time", "text": "Temporary access must be removed on or before its expiry date. Access still active after expiry is stale." },
+    { "id": "P-02", "title": "Required metadata", "text": "Every grant needs an identity, resource, role, purpose and (if temporary) a readable expiry date. Missing data cannot be treated as a violation; it must go to a human reviewer." },
+    { "id": "P-03", "title": "Accountable owner", "text": "Every grant needs a named, active owner who is not the grantee. Ownerless or self-approved access is not allowed." },
+    { "id": "P-04", "title": "Least privilege", "text": "Access must not exceed the maximum level allowed for the identity type. Temporary access may not carry admin rights, and visitors and contractors may not hold permanent access." },
+    { "id": "P-05", "title": "Maximum duration", "text": "Temporary access may not last longer than the maximum days set for the identity type." },
+    { "id": "P-06", "title": "Delegation rules", "text": "A delegation must come from a valid, active source, must not outlive its source, must not be circular, and may be passed on at most 1 hop." },
+    { "id": "P-07", "title": "No access for inactive identities", "text": "Identities marked inactive (left the institution, ended contract) must hold no active access." },
+    { "id": "P-08", "title": "Record hygiene", "text": "Duplicate grants and duplicate or missing record ids need a reviewer to clean up." }
+  ],
+  "limits": {
+    "maxTemporaryDays": { "visitor": 30, "contractor": 90, "student": 120, "staff": 180, "faculty": 180, "service": 365, "default": 90 },
+    "maxLevelByIdentityType": { "visitor": 2, "contractor": 2, "student": 2, "staff": 3, "faculty": 3, "service": 2, "default": 2 },
+    "temporaryIdentityTypes": ["visitor", "contractor"],
+    "adminLevel": 3,
+    "adminAllowedTemporary": false,
+    "maxDelegationDepth": 1,
+    "maxExtensionDays": 30
+  }
+}

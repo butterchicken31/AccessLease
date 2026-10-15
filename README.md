@@ -12,6 +12,20 @@ Built for Code-e-Manipal 2.0 (Cybersecurity track).
 - Shows a priority-ordered review queue, a policy explanation per finding,
   a simulated revocation workflow, and an audit log
 
+## Access audit engine
+The framework-independent audit engine is in `lib/access-audit.js`. Call
+`auditAccessGrants(grants, { getNow })` to evaluate grants; omitting `grants`
+uses the fictional dataset in `data/mock-access-grants.js`. The policy rules
+are in `data/access-policies.js`. Missing owners are violations because the
+policy explicitly requires an owner; missing purpose or change-ticket metadata
+is reported for manual review instead.
+
+Run the engine tests with `npm test`.
+
+The findings API returns the generated findings as a JSON array at
+`GET /api/findings`; `GET /api/findings/[id]` returns one finding or a JSON
+404 response if the ID does not exist.
+
 ## Run locally
 npm install
 npm run dev
