@@ -1,9 +1,11 @@
 "use client";
-// Review queue: summary cards, dataset switcher, and the priority-ordered table (Deliverable 1).
+// Home: hero with logo, AI search box, summary cards, and the priority-ordered review queue.
 import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { StatusBadge, WorkflowBadge, ScoreBar, ISSUE_LABELS, fmtDate, getJSON } from "../components/ui";
+import Logo from "../components/Logo";
+import Assistant from "../components/Assistant";
 
 const FILTERS = [
   { key: "open", label: "Open items" },
@@ -44,10 +46,20 @@ export default function Dashboard() {
 
   return (
     <>
-      <h1>Review queue</h1>
-      <p className="sub">
-        {data.dataset.name} · audited as of <span className="mono">{data.asOf.slice(0, 10)}</span> · highest risk first
-      </p>
+      <section className="hero">
+        <div className="hero-logo"><Logo size={72} /></div>
+        <div>
+          <h1>AccessLease</h1>
+          <p>Finds temporary access that never expired, explains the evidence, and guides the review.</p>
+          <div className="hero-meta">
+            <span className="pill">{data.dataset.name}</span>
+            <span className="pill">Audited as of {data.asOf.slice(0, 10)}</span>
+            <span className="pill">{summary.total} records checked</span>
+          </div>
+        </div>
+      </section>
+
+      <Assistant />
 
       <div className="grid4">
         <button className={`stat red ${filter === "violation" ? "on" : ""}`} onClick={() => setFilter("violation")}>
@@ -64,6 +76,7 @@ export default function Dashboard() {
         </button>
       </div>
 
+      <h2>Review queue · highest risk first</h2>
       <div className="toolbar">
         {FILTERS.map((f) => (
           <button key={f.key} className={filter === f.key ? "sel" : ""} onClick={() => setFilter(f.key)}>{f.label}</button>

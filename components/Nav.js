@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Logo from "./Logo";
 
 const LINKS = [
   { href: "/", label: "Review queue" },
@@ -13,7 +14,7 @@ export default function Nav() {
   return (
     <header className="nav">
       <div className="nav-inner">
-        <Link href="/" className="brand"><span className="brand-dot" />AccessLease</Link>
+        <Link href="/" className="brand"><Logo size={30} />AccessLease</Link>
         <nav>
           {LINKS.map((l) => {
             const active = l.href === "/" ? path === "/" || path.startsWith("/findings") : path.startsWith(l.href);
