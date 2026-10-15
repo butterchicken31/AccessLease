@@ -1,0 +1,55 @@
+{
+  "meta": { "name": "Demo campus access register", "description": "Mock data only. No real accounts." },
+  "identities": [
+    { "id": "U-01", "name": "Dr. Sunita Rao", "type": "faculty", "status": "active" },
+    { "id": "U-02", "name": "Prof. Arvind Mehta", "type": "faculty", "status": "active" },
+    { "id": "U-03", "name": "Kiran Patel", "type": "staff", "status": "active" },
+    { "id": "U-04", "name": "Rahul Verma", "type": "visitor", "status": "active" },
+    { "id": "U-05", "name": "Meera Nair", "type": "contractor", "status": "active" },
+    { "id": "U-06", "name": "Ananya Singh", "type": "student", "status": "active" },
+    { "id": "U-07", "name": "Dr. Anil Kumar", "type": "visitor", "status": "active" },
+    { "id": "U-08", "name": "svc-backup", "type": "service", "status": "active" },
+    { "id": "U-09", "name": "Vikram Joshi", "type": "staff", "status": "inactive" },
+    { "id": "U-10", "name": "Pooja Das", "type": "student", "status": "active" },
+    { "id": "U-11", "name": "Farhan Sheikh", "type": "contractor", "status": "active" },
+    { "id": "U-12", "name": "Neha Gupta", "type": "staff", "status": "active" },
+    { "id": "U-13", "name": "Tara Menon", "type": "student", "status": "active" }
+  ],
+  "roles": [
+    { "id": "R-VIEW", "name": "Viewer", "level": 1 },
+    { "id": "R-EDIT", "name": "Editor", "level": 2 },
+    { "id": "R-ADMIN", "name": "Admin", "level": 3 }
+  ],
+  "resources": [
+    { "id": "RS-01", "name": "Exam Results Database", "sensitivity": 3 },
+    { "id": "RS-02", "name": "Chemistry Lab Server", "sensitivity": 2 },
+    { "id": "RS-03", "name": "Server Room", "sensitivity": 3 },
+    { "id": "RS-04", "name": "Fest Registration Portal", "sensitivity": 1 },
+    { "id": "RS-05", "name": "Student Records DB", "sensitivity": 3 },
+    { "id": "RS-06", "name": "Wi-Fi Controller", "sensitivity": 1 },
+    { "id": "RS-07", "name": "Research Data Share", "sensitivity": 2 },
+    { "id": "RS-08", "name": "Payroll System", "sensitivity": 3 }
+  ],
+  "grants": [
+    { "id": "G-01", "identityId": "U-07", "resourceId": "RS-01", "roleId": "R-EDIT", "ownerId": "U-03", "purpose": "Exam data migration project", "grantedAt": "2026-01-10", "expiresAt": "2026-03-15", "type": "temporary", "status": "active" },
+    { "id": "G-02", "identityId": "U-05", "resourceId": "RS-03", "roleId": "R-ADMIN", "grantedAt": "2026-01-05", "expiresAt": "2026-01-12", "type": "temporary", "status": "active" },
+    { "id": "G-03", "identityId": "U-04", "resourceId": "RS-02", "roleId": "R-VIEW", "ownerId": "U-02", "purpose": "Summer research project", "grantedAt": "2026-06-10", "expiresAt": "2026-06-30", "type": "temporary", "status": "active" },
+    { "id": "G-04", "identityId": "U-13", "resourceId": "RS-04", "roleId": "R-ADMIN", "ownerId": "U-12", "purpose": "Tech fest registration desk", "grantedAt": "2026-09-20", "expiresAt": "2026-10-25", "type": "temporary", "status": "active" },
+    { "id": "G-05", "identityId": "U-08", "resourceId": "RS-05", "roleId": "R-EDIT", "purpose": "Nightly backup", "grantedAt": "2025-11-01", "type": "temporary", "status": "active" },
+    { "id": "G-06", "identityId": "U-09", "resourceId": "RS-08", "roleId": "R-EDIT", "ownerId": "U-01", "purpose": "Payroll audit support", "grantedAt": "2026-02-01", "type": "permanent", "status": "active" },
+    { "id": "G-07", "identityId": "U-06", "resourceId": "RS-07", "roleId": "R-VIEW", "ownerId": "U-01", "purpose": "Thesis data access", "grantedAt": "2026-08-01", "expiresAt": "2026-11-25", "type": "temporary", "status": "active" },
+    { "id": "G-08", "identityId": "U-12", "resourceId": "RS-06", "roleId": "R-EDIT", "ownerId": "U-03", "purpose": "Wi-Fi controller upgrade", "grantedAt": "2026-10-01", "expiresAt": "2026-10-31", "type": "temporary", "status": "active" },
+    { "id": "G-09", "identityId": "U-11", "resourceId": "RS-02", "roleId": "R-EDIT", "ownerId": "U-99", "purpose": "Lab equipment maintenance", "grantedAt": "2026-09-01", "expiresAt": "2026-10-20", "type": "temporary", "status": "active" },
+    { "id": "G-10", "identityId": "U-02", "resourceId": "RS-01", "roleId": "R-EDIT", "ownerId": "U-01", "purpose": "Exam moderation", "grantedAt": "2026-01-15", "type": "permanent", "status": "active" },
+    { "id": "G-11", "identityId": "U-02", "resourceId": "RS-05", "roleId": "R-VIEW", "ownerId": "U-01", "purpose": "Audit sample review", "grantedAt": "2026-08-15", "expiresAt": "2026-10-05", "type": "temporary", "status": "active" },
+    { "id": "G-12", "identityId": "U-06", "resourceId": "RS-07", "roleId": "R-VIEW", "ownerId": "U-01", "purpose": "Thesis data access (renewal)", "grantedAt": "2026-09-01", "expiresAt": "2026-11-25", "type": "temporary", "status": "active" },
+    { "id": "G-13", "identityId": "U-03", "resourceId": "RS-03", "roleId": "R-ADMIN", "ownerId": "U-01", "purpose": "Server room maintenance", "grantedAt": "2026-01-02", "type": "permanent", "status": "active" },
+    { "id": "G-14", "identityId": "U-07", "resourceId": "RS-02", "roleId": "R-VIEW", "ownerId": "U-02", "purpose": "Guest lecture lab demo", "grantedAt": "2026-03-01", "expiresAt": "2026-03-10", "type": "temporary", "status": "revoked" }
+  ],
+  "delegations": [
+    { "id": "D-01", "fromGrantId": "G-10", "fromIdentityId": "U-02", "toIdentityId": "U-10", "ownerId": "U-02", "purpose": "Moderation sheet entry", "grantedAt": "2026-09-01", "expiresAt": "2026-09-30", "status": "active" },
+    { "id": "D-02", "fromGrantId": "G-11", "fromIdentityId": "U-02", "toIdentityId": "U-06", "ownerId": "U-02", "purpose": "Assist with audit sampling", "grantedAt": "2026-09-05", "expiresAt": "2026-12-31", "status": "active" },
+    { "id": "D-03", "fromGrantId": "D-01", "fromIdentityId": "U-10", "toIdentityId": "U-13", "purpose": "Covering moderation shift", "grantedAt": "2026-10-01", "expiresAt": "2026-11-15", "status": "active" },
+    { "id": "D-04", "fromGrantId": "G-10", "fromIdentityId": "U-02", "toIdentityId": "U-12", "ownerId": "U-02", "purpose": "Cover during leave", "grantedAt": "2026-10-05", "expiresAt": "2026-10-25", "status": "active" }
+  ]
+}

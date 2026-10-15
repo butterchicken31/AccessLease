@@ -1,0 +1,44 @@
+{
+  "meta": { "name": "Edge-case stress test", "description": "Deliberately broken and tricky data. The engine must not crash." },
+  "identities": [
+    { "id": "U-01", "name": "Owner Active", "type": "faculty", "status": "active" },
+    { "id": "U-02", "name": "Departed Owner", "type": "staff", "status": "inactive" },
+    { "id": "U-03", "name": "Visitor One", "type": "visitor", "status": "active" },
+    { "id": "U-04", "name": "Contractor One", "type": "contractor", "status": "active" },
+    { "id": "U-05", "name": "Staff One", "type": "staff", "status": "active" },
+    { "id": "U-06", "name": "Student One", "type": "student", "status": "active" },
+    { "id": "U-07", "name": "Left Delegator", "type": "staff", "status": "inactive" },
+    { "id": "U-08", "type": "service", "status": "active" }
+  ],
+  "roles": [
+    { "id": "R-VIEW", "name": "Viewer", "level": 1 },
+    { "id": "R-EDIT", "name": "Editor", "level": 2 },
+    { "id": "R-ADMIN", "name": "Admin", "level": 3 }
+  ],
+  "resources": [
+    { "id": "RS-01", "name": "Exam Results Database", "sensitivity": 3 },
+    { "id": "RS-02", "name": "Chemistry Lab Server", "sensitivity": 2 },
+    { "id": "RS-04", "name": "Fest Registration Portal", "sensitivity": 1 }
+  ],
+  "grants": [
+    { "id": "E-01", "identityId": "U-03", "resourceId": "RS-01", "roleId": "R-VIEW", "ownerId": "U-01", "purpose": "Invalid expiry text", "grantedAt": "2026-09-01", "expiresAt": "not-a-date", "type": "temporary", "status": "active" },
+    { "id": "E-02", "identityId": "U-03", "resourceId": "RS-02", "roleId": "R-VIEW", "ownerId": "U-01", "purpose": "Boundary: date-only expiry is today", "grantedAt": "2026-10-01", "expiresAt": "2026-10-15", "type": "temporary", "status": "active" },
+    { "id": "E-03", "identityId": "U-04", "resourceId": "RS-01", "roleId": "R-VIEW", "ownerId": "U-01", "purpose": "Inverted dates", "grantedAt": "2026-10-10", "expiresAt": "2026-10-01", "type": "temporary", "status": "active" },
+    { "id": "E-04", "identityId": "U-04", "resourceId": "RS-99", "roleId": "R-VIEW", "ownerId": "U-01", "purpose": "Unknown resource", "grantedAt": "2026-09-01", "expiresAt": "2026-11-01", "type": "temporary", "status": "active" },
+    { "id": "E-05", "identityId": "U-05", "resourceId": "RS-01", "roleId": "R-SUPER", "ownerId": "U-01", "purpose": "Unknown role", "grantedAt": "2026-09-01", "expiresAt": "2026-11-01", "type": "temporary", "status": "active" },
+    { "id": "E-06", "identityId": "U-05", "resourceId": "RS-02", "roleId": "R-EDIT", "ownerId": "U-05", "purpose": "Self-approved", "grantedAt": "2026-09-01", "expiresAt": "2026-10-30", "type": "temporary", "status": "active" },
+    { "id": "E-07", "identityId": "U-06", "resourceId": "RS-01", "roleId": "R-VIEW", "ownerId": "U-02", "purpose": "Owner has left", "grantedAt": "2026-09-01", "expiresAt": "2026-11-01", "type": "temporary", "status": "active" },
+    { "id": "E-08" },
+    { "id": "E-09", "identityId": "U-03", "resourceId": "RS-02", "roleId": "R-EDIT", "ownerId": "U-01", "purpose": "Timezone boundary (-05:00 offset)", "grantedAt": "2026-10-01", "expiresAt": "2026-10-14T23:30:00-05:00", "type": "temporary", "status": "active" },
+    { "id": "E-10", "identityId": "U-06", "resourceId": "RS-04", "roleId": "R-VIEW", "ownerId": "U-01", "purpose": "Duplicate A", "grantedAt": "2026-09-01", "expiresAt": "2026-11-01", "type": "temporary", "status": "active" },
+    { "id": "E-11", "identityId": "U-06", "resourceId": "RS-04", "roleId": "R-VIEW", "ownerId": "U-01", "purpose": "Duplicate B", "grantedAt": "2026-09-05", "expiresAt": "2026-11-01", "type": "temporary", "status": "active" },
+    { "id": "E-12", "identityId": "U-04", "resourceId": "RS-04", "roleId": "R-VIEW", "ownerId": "U-01", "purpose": "Permanent contractor", "grantedAt": "2026-01-01", "type": "permanent", "status": "active" },
+    { "id": "E-01", "identityId": "U-06", "resourceId": "RS-02", "roleId": "R-VIEW", "ownerId": "U-01", "purpose": "Reused record id", "grantedAt": "2026-09-01", "expiresAt": "2026-11-01", "type": "temporary", "status": "active" }
+  ],
+  "delegations": [
+    { "id": "D-E1", "fromGrantId": "D-E2", "fromIdentityId": "U-01", "toIdentityId": "U-03", "ownerId": "U-01", "purpose": "Circular A", "grantedAt": "2026-10-01", "expiresAt": "2026-10-30", "status": "active" },
+    { "id": "D-E2", "fromGrantId": "D-E1", "fromIdentityId": "U-03", "toIdentityId": "U-05", "ownerId": "U-01", "purpose": "Circular B", "grantedAt": "2026-10-01", "expiresAt": "2026-10-30", "status": "active" },
+    { "id": "D-E3", "fromGrantId": "G-404", "fromIdentityId": "U-01", "toIdentityId": "U-06", "ownerId": "U-01", "purpose": "Source does not exist", "grantedAt": "2026-10-01", "expiresAt": "2026-10-30", "status": "active" },
+    { "id": "D-E4", "fromGrantId": "E-02", "fromIdentityId": "U-07", "toIdentityId": "U-06", "ownerId": "U-01", "purpose": "Inactive delegator", "grantedAt": "2026-10-02", "expiresAt": "2026-10-31", "status": "active" }
+  ]
+}
