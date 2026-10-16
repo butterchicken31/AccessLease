@@ -122,6 +122,27 @@ export default function Dashboard() {
           <div className="n">{summary.violation}</div>
           <div className="l">Confirmed violations</div>
         </button>
+        <button className={`stat amber ${filter === "needs_review" ? "on" : ""}`} onClick={() => setFilter("needs_review")}>
+          <div className="n">{summary.needs_review}</div><div className="l">Needs review (missing data)</div>
+        </button>
+        <button className={`stat green ${filter === "compliant" ? "on" : ""}`} onClick={() => setFilter("compliant")}>
+          <div className="n">{summary.compliant}</div><div className="l">Compliant</div>
+        </button>
+        <button className={`stat ${filter === "resolved" ? "on" : ""}`} onClick={() => setFilter("resolved")}>
+          <div className="n">{summary.resolved}</div><div className="l">Resolved (revoked)</div>
+        </button>
+      </div>
+
+      <div className="toolbar">
+        {FILTERS.map((f) => (
+          <button key={f.key} className={filter === f.key ? "sel" : ""} onClick={() => setFilter(f.key)}>{f.label}</button>
+        ))}
+        <span className="spacer" />
+        <button disabled={busy} onClick={() => switchDataset("demo")}>Demo data</button>
+        <button disabled={busy} onClick={() => switchDataset("edge")}>Edge-case stress test</button>
+        <button disabled={busy} onClick={() => switchDataset("reset")}>Reset workflow</button>
+      </div>
+      {err && <p className="err">{err}</p>}
 
         <button
           className={`stat amber ${
