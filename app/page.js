@@ -13,7 +13,7 @@ import {
   getJSON,
 } from "../components/ui";
 import Logo from "../components/Logo";
-import Assistant from "../components/Assistant";
+
 
 const FILTERS = [
   { key: "open", label: "Open items" },
@@ -113,7 +113,6 @@ export default function Dashboard() {
         </div>
       </section>
 
-      <Assistant />
 
       <div className="grid4">
         <button

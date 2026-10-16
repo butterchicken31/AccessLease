@@ -5,11 +5,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "./Logo";
 
+
 const LINKS = [
   { href: "/", label: "Review queue" },
+  { href: "/suspicious-access", label: "Suspicious access" },
   { href: "/graph", label: "Permission graph" },
   { href: "/audit", label: "Audit log" },
 ];
+
 
 export default function Nav() {
   const path = usePathname();

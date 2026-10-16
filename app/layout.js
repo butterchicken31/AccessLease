@@ -2,6 +2,7 @@
 import "./globals.css";
 import Nav from "../components/Nav";
 import Logo from "../components/Logo";
+import Assistant from "../components/Assistant";
 
 export const metadata = {
   title: "AccessLease",
@@ -14,6 +15,7 @@ export default function RootLayout({ children }) {
       <body>
         <Nav />
         <main>{children}</main>
+        <Assistant />
         <footer className="footer">
           <Logo size={22} />
           <span>
