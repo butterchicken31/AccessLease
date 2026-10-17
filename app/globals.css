@@ -1,25 +1,7 @@
 
 :root {
-  --bg: #f1f4fa;
-  --surface: #ffffff;
-  --text: #0e1a33;
-  --muted: #5a6882;
-  --border: #dbe2ef;
-  --accent: #4f46e5;
-  --accent2: #0891b2;
-  --shadow: 0 1px 2px rgba(14,26,51,.05), 0 6px 18px rgba(14,26,51,.06);
-  --red: #c4262e;
-  --red-bg: #fde8e9;
-  --amber: #9a5b00;
-  --amber-bg: #fff1d6;
-  --green: #17703a;
-  --green-bg: #dff3e6;
-  --grey: #4d5866;
-  --grey-bg: #e9edf3;
-  --blue: #3b3fd1;
-  --blue-bg: #e6e8ff;
-}
 
+}
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #0a1020;
@@ -42,16 +24,25 @@
     --blue-bg: #1f2a5c;
   }
 }
-
 * { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; }
+main { max-width: 1180px; margin: 0 auto; padding: 24px 20px 60px; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.86em; }
+h1 { font-size: 1.6rem; margin: 0 0 4px; }
+h2 { font-size: 1.05rem; margin: 0 0 10px; }
+.sub { color: var(--muted); margin: 0 0 20px; }
 
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.5;
-}
+.nav { background: var(--surface); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 5; }
+.nav-inner { max-width: 1180px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; gap: 28px; height: 54px; }
+.brand { font-weight: 700; color: var(--text); display: flex; align-items: center; gap: 8px; }
+.brand:hover { text-decoration: none; }
+.brand-dot { width: 12px; height: 12px; border-radius: 3px; background: var(--accent); display: inline-block; }
+.nav nav { display: flex; gap: 4px; }
+.nav nav a { color: var(--muted); padding: 6px 12px; border-radius: 6px; font-size: 0.93rem; }
+.nav nav a.active { background: var(--blue-bg); color: var(--blue); font-weight: 600; }
+.nav nav a:hover { text-decoration: none; background: var(--grey-bg); }
 
 main {
   max-width: 1180px;
