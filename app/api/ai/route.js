@@ -1,3 +1,4 @@
+
 import { NextResponse } from "next/server";
 
 export async function POST(request) {
@@ -11,9 +12,12 @@ export async function POST(request) {
       );
     }
 
-    const apiKey = process.env.GROQ_API_KEY;
+    const apiKey = process.env.GROQ_API_KEY?.trim();
 
-    if (!apiKey || apiKey === "YOUR_REAL_GROQ_API_KEY") {
+    if (
+      !apiKey ||
+      apiKey === "YOUR_REAL_GROQ_API_KEY"
+    ) {
       return NextResponse.json(
         { error: "Configure a valid GROQ_API_KEY in .env.local." },
         { status: 500 }
@@ -32,10 +36,12 @@ export async function POST(request) {
           messages: [
             {
               role: "user",
-              content: prompt,
+              content: prompt.trim(),
             },
           ],
-          model: process.env.GROQ_MODEL || "openai/gpt-oss-120b",
+          model:
+            process.env.GROQ_MODEL ||
+            "openai/gpt-oss-120b",
           temperature: 1,
           max_completion_tokens: 2048,
           top_p: 1,
@@ -49,7 +55,7 @@ export async function POST(request) {
     if (!response.ok) {
       const data = await response.json().catch(() => ({}));
 
-      console.error("Groq API error:", response.status, data);
+      console.error("Groq API error:", response.status);
 
       return NextResponse.json(
         { error: data?.error?.message || "AI request failed." },
@@ -64,7 +70,6 @@ export async function POST(request) {
       );
     }
 
-    // Groq streams chunks; collect them into the existing JSON response.
     const reader = response.body.getReader();
     const decoder = new TextDecoder();
 
@@ -95,14 +100,13 @@ export async function POST(request) {
             const chunk = JSON.parse(payload);
             text += chunk.choices?.[0]?.delta?.content || "";
           } catch {
-            // Ignore malformed individual chunks.
+            // Ignore malformed stream chunks.
           }
         }
       }
 
       buffer += decoder.decode();
 
-      // Process any remaining complete SSE event.
       for (const line of buffer.split("\n")) {
         const trimmed = line.trim();
 

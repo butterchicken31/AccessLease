@@ -11,8 +11,8 @@ import {
   ISSUE_LABELS,
   fmtDate,
   getJSON,
-} from "../components/ui";
-import Logo from "../components/Logo";
+} from "../../components/ui.js";
+import Logo from "../../components/Logo.js";
 
 
 const FILTERS = [
