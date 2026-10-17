@@ -144,35 +144,6 @@ export default function Dashboard() {
       </div>
       {err && <p className="err">{err}</p>}
 
-        <button
-          className={`stat amber ${
-            filter === "needs_review" ? "on" : ""
-          }`}
-          onClick={() => setFilter("needs_review")}
-        >
-          <div className="n">{summary.needs_review}</div>
-          <div className="l">Needs review (missing data)</div>
-        </button>
-
-        <button
-          className={`stat green ${
-            filter === "compliant" ? "on" : ""
-          }`}
-          onClick={() => setFilter("compliant")}
-        >
-          <div className="n">{summary.compliant}</div>
-          <div className="l">Compliant</div>
-        </button>
-
-        <button
-          className={`stat ${filter === "resolved" ? "on" : ""}`}
-          onClick={() => setFilter("resolved")}
-        >
-          <div className="n">{summary.resolved}</div>
-          <div className="l">Resolved (revoked)</div>
-        </button>
-      </div>
-
       <h2>Review queue · highest risk first</h2>
 
       <div className="toolbar">
