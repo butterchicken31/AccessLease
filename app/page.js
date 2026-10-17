@@ -14,7 +14,6 @@ import {
 } from "../components/ui";
 import Logo from "../components/Logo";
 
-
 const FILTERS = [
   { key: "open", label: "Open items" },
   { key: "violation", label: "Confirmed violations" },
@@ -113,7 +112,6 @@ export default function Dashboard() {
         </div>
       </section>
 
-
       <div className="grid4">
         <button
           className={`stat red ${filter === "violation" ? "on" : ""}`}
@@ -122,29 +120,31 @@ export default function Dashboard() {
           <div className="n">{summary.violation}</div>
           <div className="l">Confirmed violations</div>
         </button>
-        <button className={`stat amber ${filter === "needs_review" ? "on" : ""}`} onClick={() => setFilter("needs_review")}>
-          <div className="n">{summary.needs_review}</div><div className="l">Needs review (missing data)</div>
+
+        <button
+          className={`stat amber ${filter === "needs_review" ? "on" : ""}`}
+          onClick={() => setFilter("needs_review")}
+        >
+          <div className="n">{summary.needs_review}</div>
+          <div className="l">Needs review (missing data)</div>
         </button>
-        <button className={`stat green ${filter === "compliant" ? "on" : ""}`} onClick={() => setFilter("compliant")}>
-          <div className="n">{summary.compliant}</div><div className="l">Compliant</div>
+
+        <button
+          className={`stat green ${filter === "compliant" ? "on" : ""}`}
+          onClick={() => setFilter("compliant")}
+        >
+          <div className="n">{summary.compliant}</div>
+          <div className="l">Compliant</div>
         </button>
-        <button className={`stat ${filter === "resolved" ? "on" : ""}`} onClick={() => setFilter("resolved")}>
-          <div className="n">{summary.resolved}</div><div className="l">Resolved (revoked)</div>
+
+        <button
+          className={`stat ${filter === "resolved" ? "on" : ""}`}
+          onClick={() => setFilter("resolved")}
+        >
+          <div className="n">{summary.resolved}</div>
+          <div className="l">Resolved (revoked)</div>
         </button>
       </div>
-
-      <div className="toolbar">
-        {FILTERS.map((f) => (
-          <button key={f.key} className={filter === f.key ? "sel" : ""} onClick={() => setFilter(f.key)}>{f.label}</button>
-        ))}
-        <span className="spacer" />
-        <button disabled={busy} onClick={() => switchDataset("demo")}>Demo data</button>
-        <button disabled={busy} onClick={() => switchDataset("edge")}>Edge-case stress test</button>
-        <button disabled={busy} onClick={() => switchDataset("reset")}>Reset workflow</button>
-      </div>
-      {err && <p className="err">{err}</p>}
-
-      <h2>Review queue · highest risk first</h2>
 
       <div className="toolbar">
         {FILTERS.map((f) => (
@@ -173,6 +173,8 @@ export default function Dashboard() {
       </div>
 
       {err && <p className="err">{err}</p>}
+
+      <h2>Review queue · highest risk first</h2>
 
       <div className="card tablewrap" style={{ padding: 4 }}>
         <table>
@@ -220,10 +222,7 @@ export default function Dashboard() {
                     <b>{f.identity}</b>
                   </Link>
 
-                  <div
-                    className="sub mono"
-                    style={{ margin: 0 }}
-                  >
+                  <div className="sub mono" style={{ margin: 0 }}>
                     {f.itemId} ·{" "}
                     {f.kind === "delegation" ? "delegated" : f.accessType}
                   </div>
@@ -231,6 +230,7 @@ export default function Dashboard() {
 
                 <td>{f.resource}</td>
                 <td>{f.role}</td>
+
                 <td>
                   <StatusBadge status={f.status} />
                 </td>
