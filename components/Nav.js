@@ -11,6 +11,7 @@ const LINKS = [
   { href: "/suspicious-access", label: "Suspicious access" },
   { href: "/graph", label: "Permission graph" },
   { href: "/audit", label: "Audit log" },
+  { href: "/policy", label: "Company policy" },
 ];
 
 
