@@ -4,7 +4,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "./Logo";
-
+import { useTheme } from "./ThemeProvider";
 
 const LINKS = [
   { href: "/", label: "Review queue" },
@@ -14,9 +14,9 @@ const LINKS = [
   { href: "/policy", label: "Company policy" },
 ];
 
-
 export default function Nav() {
   const path = usePathname();
+  const { theme, toggleTheme, ready } = useTheme();
 
   return (
     <header className="nav">
@@ -44,6 +44,18 @@ export default function Nav() {
             );
           })}
         </nav>
+
+        <button
+          type="button"
+          className="theme-toggle"
+          onClick={toggleTheme}
+          disabled={!ready}
+          aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+          title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+        >
+          <span aria-hidden="true">{theme === "dark" ? "☀" : "☾"}</span>
+          {ready ? (theme === "dark" ? "Light mode" : "Dark mode") : "Theme"}
+        </button>
       </div>
     </header>
   );

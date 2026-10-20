@@ -5,3 +5,6 @@ node_modules
 .env*.local
 .vercel
 .DS_Store
+
+# Local SQLite database
+.data/
